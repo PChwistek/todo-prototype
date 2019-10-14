@@ -14,7 +14,7 @@ class CompleteTodoViewController: UIViewController {
     var selectedToDo = ToDoItem(title: "default")
     
     @IBOutlet weak var titleLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = selectedToDo.title

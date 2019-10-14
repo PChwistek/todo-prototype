@@ -14,7 +14,6 @@ class AddTodoViewController: UIViewController {
     @IBOutlet weak var importantSwitch: UISwitch!
 
     var previousViewController = ItemTableUIController()
-    var viewModel = ItemTableViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

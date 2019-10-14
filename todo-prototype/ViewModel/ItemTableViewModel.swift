@@ -8,8 +8,8 @@
 
 import Foundation
 class ItemTableViewModel {
-    
-    var toDos : [ToDoItem] = []
+    private let defaults = UserDefaults.standard
+    var toDos =  [ToDoItem]()
 
     func getToDos() -> [ToDoItem] {
         return toDos
@@ -25,6 +25,7 @@ class ItemTableViewModel {
     }
     
     func addToDo(title: String, isImportant: Bool) -> [ToDoItem] {
+        print(toDos.count)
         var toDo = ToDoItem(title: title)
         toDo.important = isImportant
         toDos.append(toDo)
@@ -32,10 +33,40 @@ class ItemTableViewModel {
     }
     
     func removeToDo(title: String) -> [ToDoItem] {
-        print(self.toDos)
-        
-        
+        print(toDos.count)
+        for (index, item) in toDos.enumerated() {
+              if item.title == title {
+                  toDos.remove(at: index)
+                  break
+              }
+          }
         return toDos
+    }
+    
+    func fetchData() {
+        
+        if let list = defaults.value(forKey: "encodedList") as? [[String: Any]] {
+            
+            for item in list {
+                guard let todoItem = ToDoItem(item) else { return }
+                toDos.append(todoItem)
+            }
+        }
+    }
+    
+    
+    //MARK: Save data to user defaults
+    
+    func saveData() {
+        
+        var encodedList = [[String: Any]]()
+        
+        for item in toDos {
+            guard let unwrappedItem = item.toPlist() else { return }
+
+            encodedList.append(unwrappedItem)
+        }
+        defaults.set(encodedList, forKey: "encodedList")
     }
     
 }
