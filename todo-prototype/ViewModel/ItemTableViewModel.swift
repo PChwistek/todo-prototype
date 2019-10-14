@@ -11,6 +11,10 @@ class ItemTableViewModel {
     
     var toDos : [ToDoItem] = []
 
+    func getToDos() -> [ToDoItem] {
+        return toDos
+    }
+    
     func createToDos() -> [ToDoItem] {
         var eggs = ToDoItem(title: "buy eggs")
         eggs.important = true
@@ -27,6 +31,11 @@ class ItemTableViewModel {
         return toDos
     }
     
-    
+    func removeToDo(title: String) -> [ToDoItem] {
+        print(self.toDos)
+        
+        
+        return toDos
+    }
     
 }

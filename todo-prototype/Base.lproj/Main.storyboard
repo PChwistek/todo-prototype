@@ -90,10 +90,59 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Fgj-rs-q9g" kind="show" identifier="moveToComplete" id="GYm-S7-4aG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j22-kq-pyf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1657.9710144927537" y="320.75892857142856"/>
+        </scene>
+        <!--Complete Todo View Controller-->
+        <scene sceneID="Fd2-ci-vRz">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gT8-Lh-QAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="Fgj-rs-q9g" customClass="CompleteTodoViewController" customModule="todo_prototype" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hZE-nq-AED">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDb-EX-5CF">
+                                <rect key="frame" x="173.5" y="194" width="67" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Complete"/>
+                                <connections>
+                                    <action selector="completedTapped:" destination="Fgj-rs-q9g" eventType="touchUpInside" id="ejc-CX-O36"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acA-Bp-Jwh">
+                                <rect key="frame" x="161.5" y="108" width="91" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="YDb-EX-5CF" firstAttribute="top" secondItem="acA-Bp-Jwh" secondAttribute="bottom" constant="57" id="5te-JJ-47W"/>
+                            <constraint firstItem="YDb-EX-5CF" firstAttribute="centerX" secondItem="hZE-nq-AED" secondAttribute="centerX" id="DvE-Z2-2s5"/>
+                            <constraint firstItem="acA-Bp-Jwh" firstAttribute="centerX" secondItem="hZE-nq-AED" secondAttribute="centerX" id="FYa-dR-1wP"/>
+                            <constraint firstItem="0Aj-LT-Uav" firstAttribute="trailing" secondItem="YDb-EX-5CF" secondAttribute="trailing" constant="173.5" id="GKg-SV-7d3"/>
+                            <constraint firstItem="YDb-EX-5CF" firstAttribute="leading" secondItem="0Aj-LT-Uav" secondAttribute="leading" constant="173.5" id="ikw-ie-vl2"/>
+                            <constraint firstItem="acA-Bp-Jwh" firstAttribute="top" secondItem="0Aj-LT-Uav" secondAttribute="top" constant="20" id="qJg-gG-zwG"/>
+                            <constraint firstItem="acA-Bp-Jwh" firstAttribute="top" secondItem="0Aj-LT-Uav" secondAttribute="top" constant="20" id="rar-8f-vja"/>
+                            <constraint firstItem="acA-Bp-Jwh" firstAttribute="top" secondItem="0Aj-LT-Uav" secondAttribute="top" constant="20" id="ubi-3e-kqE"/>
+                            <constraint firstItem="acA-Bp-Jwh" firstAttribute="centerX" secondItem="hZE-nq-AED" secondAttribute="centerX" id="w26-fN-Oq3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0Aj-LT-Uav"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="75K-kO-hoU"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="acA-Bp-Jwh" id="xbe-cx-wUh"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1676.8115942028987" y="1009.8214285714286"/>
         </scene>
         <!--Add Todo View Controller-->
         <scene sceneID="my0-yW-PZf">

@@ -15,8 +15,9 @@ class ItemTableUIController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        toDos = viewModel.createToDos()
+        
+        toDos = viewModel.getToDos()
+        
         
     }
 
@@ -39,13 +40,29 @@ class ItemTableUIController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let toDo = toDos[indexPath.row]
+        performSegue(withIdentifier: "moveToComplete", sender: toDo)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let addVC = segue.destination as! AddTodoViewController
-        addVC.previousViewController = self
-        addVC.viewModel = viewModel
+        if let addVC = segue.destination as? AddTodoViewController {
+            addVC.previousViewController = self
+            addVC.viewModel = viewModel
+        }
+        
+        if let completeVC = segue.destination as? CompleteTodoViewController {
+            if let toDo = sender as? ToDoItem {
+                completeVC.selectedToDo = toDo
+            }
+        }
     }
     
     func addToDo(title: String, isImportant: Bool) {
        toDos = viewModel.addToDo(title: title, isImportant: isImportant)
+    }
+    
+    func removeToDo(title: String) {
+        toDos = viewModel.removeToDo(title: title)
     }
 }
